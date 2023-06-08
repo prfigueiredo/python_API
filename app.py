@@ -1,3 +1,5 @@
+#08 JUN 2023
+
 import json
 from flask import Flask, jsonify, request
 
@@ -31,7 +33,6 @@ def get_item_by_id(id):
     for item in data_json:
         if item.get('id') == id:
             return jsonify(item)
-    return jsonify({'error': 'Item not found'})
 
 # Editar (item)
 @app.route('/data_json/<int:id>', methods=['PUT'])
@@ -41,7 +42,6 @@ def edit_item_by_id(id):
         if item.get('id') == id:
             data_json[index].update(edited_item)
             return jsonify(data_json[index])
-    return jsonify({'error': 'Item not found'})
 
 # Excluir (item)
 @app.route('/data_json/<int:id>', methods=['DELETE'])
@@ -50,7 +50,6 @@ def delete_item(id):
         if item.get('id') == id:
             del data_json[index]
             return jsonify(data_json)
-    return jsonify({'error': 'Item not found'})
 
 # Rodar a aplicação
 if __name__ == '__main__':
